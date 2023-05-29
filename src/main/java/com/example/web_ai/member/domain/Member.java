@@ -14,7 +14,6 @@ import java.util.List;
 @Getter
 public class Member {
     @Id
-    @Column(name = "Member_Idx")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idx;
 
@@ -24,7 +23,7 @@ public class Member {
     @Column(nullable = false, length = 30)
     private String nickname;
 
-    @OneToMany(mappedBy = "member")
-    @Builder.Default
-    private List<Image> image = new ArrayList<Image>();
+//    @OneToMany(mappedBy = "member")
+//    @Builder.Default
+//    private List<Image> image = new ArrayList<Image>();
 }
