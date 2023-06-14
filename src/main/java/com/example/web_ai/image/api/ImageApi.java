@@ -20,8 +20,8 @@ public class ImageApi {
     public ResponseEntity<ImageDto> getImageByIdx(@RequestParam Long idx) {
         return imageService.getImageByIdx(idx);
     }
-    @PutMapping("/imageIdx")
-    public ResponseEntity<ImageDto> imageUpdate(@RequestParam Long idx, @RequestBody ImageDto imageDto) {
-        return imageService.update(idx, imageDto);
-    }
+//    @PutMapping("/imageIdx")
+//    public ResponseEntity<ImageDto> imageUpdate(@RequestParam Long idx, @RequestBody ImageDto imageDto) {
+//        return imageService.update(idx, imageDto);
+//    }
 }

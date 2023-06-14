@@ -1,7 +1,7 @@
-package com.example.web_ai.image.domain;
+package com.example.web_ai.imageAlter.domain;
 
 import com.example.web_ai.gps.Gps;
-import com.example.web_ai.image.dto.ImageDto;
+import com.example.web_ai.imageAlter.dto.ImageAlterDto;
 import com.example.web_ai.member.domain.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,11 +10,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Getter
-public class Image {
+public class ImageAlter {
     @Id
     @Column(name = "Image_Idx")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +27,6 @@ public class Image {
     @JoinColumn(name = "Member_Idx")
     private Member member;
 
-    @Embedded
     @Column(nullable = false)
     private Gps gps;
 
@@ -41,19 +40,20 @@ public class Image {
         this.savedPath = savedPath;
     }
 
-    public ImageDto toDTO(Image image) {
-        ImageDto imageDto = ImageDto.builder()
-                .idx(image.getIdx())
-                .savedPath(image.getSavedPath())
-                .memberIdx(image.getMember().getIdx())
-                .gps(image.getGps())
-                .factor1(image.getFactor1())
-                .factor2(image.getFactor2())
-                .factor3(image.getFactor3())
-                .factor4(image.getFactor4())
-                .factor5(image.getFactor5())
+    public ImageAlterDto toDTO(ImageAlter imageAlter) {
+        ImageAlterDto.ImageDtoBuilder builder = ImageAlterDto.builder().toBuilder();
+        ImageAlterDto imageAlterDto = builder
+                .idx(imageAlter.getIdx())
+                .savedPath(imageAlter.getSavedPath())
+                .memberIdx(imageAlter.getMember().getIdx())
+                .gps(imageAlter.getGps())
+                .factor1(imageAlter.getFactor1())
+                .factor2(imageAlter.getFactor2())
+                .factor3(imageAlter.getFactor3())
+                .factor4(imageAlter.getFactor4())
+                .factor5(imageAlter.getFactor5())
                 .build();
-        return imageDto;
-    }
 
+        return imageAlterDto;
+    }
 }
